@@ -7,24 +7,16 @@ namespace SegmentList
 {
     public partial class SegmentForm : Form
     {
+        private int _countLine = 50;
+
         private LineSegmentDatabase _lineSegmentDatabase;
         public SegmentForm()
         {
             InitializeComponent();
             _lineSegmentDatabase = new LineSegmentDatabase();
-            _lineSegmentDatabase.Initialize(20);
+            _lineSegmentDatabase.Initialize(_countLine);
 
             SegmentDataGrid.DataSource = _lineSegmentDatabase.LineSegments.ToList();
-        }
-
-        private void NumberQuarter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ConsistOfQuarter();
-        }
-
-        private void FullQuarter_CheckedChanged(object sender, EventArgs e)
-        {
-            ConsistOfQuarter();
         }
 
         private void ConsistOfQuarter()
@@ -68,11 +60,6 @@ namespace SegmentList
             letterSearch.Text = "Letter";
         }
 
-        private void sortComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            sortTable();
-        }
-
         private void sortTable()
         {
             List<LineSegment> _sortLineSegments;
@@ -108,25 +95,7 @@ namespace SegmentList
             }
         }
 
-        private void followComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            sortTable();
-        }
 
-        private void letterSearch_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            searchNumber();
-        }
-
-        private void operationSearch_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            searchNumber();
-        }
-
-        private void numberSearch_TextChanged(object sender, EventArgs e)
-        {
-            searchNumber();
-        }
 
         private void searchNumber()
         {
@@ -189,5 +158,45 @@ namespace SegmentList
             }
         }
 
+
+
+
+
+
+
+        private void NumberQuarter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ConsistOfQuarter();
+        }
+
+        private void FullQuarter_CheckedChanged(object sender, EventArgs e)
+        {
+            ConsistOfQuarter();
+        }
+
+        private void sortComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            sortTable();
+        }
+
+        private void followComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            sortTable();
+        }
+
+        private void letterSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            searchNumber();
+        }
+
+        private void operationSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            searchNumber();
+        }
+
+        private void numberSearch_TextChanged(object sender, EventArgs e)
+        {
+            searchNumber();
+        }
     }
 }
